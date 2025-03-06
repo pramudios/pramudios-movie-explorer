@@ -1,0 +1,46 @@
+.footerContainer {
+  background-color: get-color('neutral', 500);
+  padding: rem-calc(8) 0;
+  margin-top: rem-calc(90);
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @include md {
+    height: 100px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: rem-calc(7.11);
+
+  .textLogo {
+    font-weight: 600;
+    font-size: rem-calc(28.44);
+    line-height: rem-calc(40);
+    letter-spacing: rem-calc(-0.8);
+    color: get-color('neutral', 100);
+  }
+}
+
+.footerInfo {
+  color: #a4a7ae;
+  display: flex;
+  align-items: center;
+}
+
+/* Pastikan di mobile tetap sejajar */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: row; /* Pastikan tetap horizontal */
+    justify-content: space-between;
+    align-items: center;
+  }
+}

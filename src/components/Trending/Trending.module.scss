@@ -1,0 +1,18 @@
+.headerMovies {
+  margin: rem-calc(40) 0 rem-calc(24) 0;
+
+  @include md {
+    margin-bottom: 0 0 rem-calc(40) 0;
+  }
+
+  .title {
+    font-weight: 600;
+    @include typography('display-xs', 'bold');
+    color: get-color('neutral', 100);
+
+    @include md {
+      letter-spacing: rem-calc(-0.8);
+      @include typography('display-lg', 'bold');
+    }
+  }
+}

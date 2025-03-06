@@ -1,0 +1,53 @@
+.trendingGroup {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.swiperContainer {
+  width: 100%;
+  overflow: visible;
+}
+
+.swiperSlide {
+  position: relative;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Efek Blur di Akhir */
+.overlayBlur {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Tombol Navigasi */
+.navButton {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Mobile: 2 item per baris */
+@media (max-width: 768px) {
+  .swiperSlide {
+    width: 50%;
+  }
+}

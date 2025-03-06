@@ -1,0 +1,42 @@
+.releaseGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); // Default Desktop
+  gap: 20px;
+  width: 100%;
+}
+
+/* Mobile: 2 item per baris */
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.item {
+  width: 100%;
+}
+
+.loadMore {
+  text-align: center;
+  padding: 10px 20px;
+  color: white;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.loadMore:hover {
+  background-color: #555;
+}

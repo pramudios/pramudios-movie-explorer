@@ -1,0 +1,34 @@
+.button {
+  height: rem-calc(44);
+  padding: rem-calc(8);
+  gap: rem-calc(8);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: rem-calc(16);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  @media (min-width: 768px) {
+    height: rem-calc(48);
+    padding: 12px 32px;
+  }
+}
+
+.primary {
+  background-color: #961200;
+  color: #fdfdfd;
+  border: 1px solid #961200;
+}
+
+.secondary {
+  background-color: #0a0d12;
+  color: #fdfdfd;
+  border: 1px solid #181d27;
+}
+
+.icon {
+  margin-left: rem-calc(8);
+}
