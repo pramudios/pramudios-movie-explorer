@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Button.module.scss';
 import clsx from 'clsx';
-import PlayIcon from '@/assets/icon_play.svg'; // Import ikon SVG
+import PlayIcon from '@/assets/icon_play.png'; // Import ikon SVG
 
 type ButtonVariant = 'primary' | 'secondary';
 
@@ -32,7 +32,13 @@ export const Button = <T extends React.ElementType = 'button'>({
     >
       {children}
       {variant === 'primary' && (
-        <PlayIcon className={styles.icon} width={24} height={24} />
+        <img
+          src={PlayIcon}
+          alt='FavIcon'
+          className={styles.icon}
+          width={24}
+          height={24}
+        />
       )}
     </Component>
   );

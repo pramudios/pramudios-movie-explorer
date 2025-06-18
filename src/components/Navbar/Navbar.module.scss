@@ -5,23 +5,64 @@
   justify-content: space-between;
   align-items: center;
   gap: rem-calc(16);
+  z-index: 3;
 
-  .logo {
+  .logoMenu {
     display: flex;
     flex-direction: row;
-    cursor: pointer;
-    height: rem-calc(31.33);
-    gap: rem-calc(7.11);
+    gap: rem-calc(80);
 
-    .textLogo {
-      font-weight: 600;
-      font-size: rem-calc(28.44);
-      line-height: rem-calc(40);
-      text-align: center;
-      letter-spacing: rem-calc(-0.8);
-      color: get-color('neutral', 100);
+    .logo {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      height: rem-calc(31.33);
+      gap: rem-calc(7.11);
+
+      .textLogo {
+        font-weight: 600;
+        font-size: rem-calc(28.44);
+        line-height: rem-calc(40);
+        text-align: center;
+        letter-spacing: rem-calc(-0.8);
+        color: get-color('neutral', 100);
+      }
+    }
+
+    .desktopMenu {
+      display: none;
+
+      @include md {
+        display: block;
+
+        .desktopNavLinks {
+          display: flex;
+          flex-direction: row;
+          gap: rem-calc(48);
+
+          li {
+            cursor: pointer;
+            a {
+              @include typography('text-md', 'regular');
+              text-decoration: none; // ⬅️ hilangkan garis bawah
+              color: get-color('neutral', 100); // ⬅️ pastikan tetap putih
+
+              &:visited,
+              &:hover,
+              &:active {
+                text-decoration: none; // ⬅️ hilangkan saat dikunjungi, hover, dll
+                color: get-color(
+                  'neutral',
+                  100
+                ); // ⬅️ pastikan warna tetap putih
+              }
+            }
+          }
+        }
+      }
     }
   }
+
   .mobileMenu {
     display: none;
     position: absolute;
@@ -43,123 +84,59 @@
 
     .mobileHeader {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
       height: rem-calc(64);
+
+      .logo {
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+        gap: rem-calc(4);
+        align-items: center;
+
+        .navLogo {
+          max-height: rem-calc(28);
+        }
+
+        .textLogo {
+          font-weight: 600;
+          font-size: rem-calc(20);
+          line-height: rem-calc(28);
+          text-align: center;
+          letter-spacing: rem-calc(-0.4);
+          color: get-color('neutral', 100);
+          position: relative;
+          top: rem-calc(4); // ✅ Atur sesuai kebutuhan, bisa 1~4px
+        }
+      }
+
+      .closeIcon {
+        cursor: pointer;
+      }
     }
-    .closeIcon {
-      cursor: pointer;
-    }
+
     .mobileNavLinks {
       display: flex;
       flex-direction: column;
-      gap: get-spacing('spacing-3xl');
+      gap: rem-calc(16);
       list-style: none;
+      margin-top: rem-calc(48);
 
       li {
         cursor: pointer;
         a {
           @include typography('text-md', 'regular');
-        }
-      }
-    }
+          text-decoration: none; // ⬅️ hilangkan garis bawah
+          color: get-color('neutral', 100); // ⬅️ pastikan tetap putih
 
-    //tampilan mobile with active hamburger
-
-    .ctaButton {
-      padding: get-spacing('spacing-3xl');
-      margin-top: rem-calc(24);
-      gap: get-spacing('spacing-md');
-
-      .buttonContent {
-        .buttonTextMobile {
-          color: get-color('neutral', 100);
-          @include typography('text-md', 'medium');
-          display: block;
-
-          @include md {
-            display: none;
+          &:visited,
+          &:hover,
+          &:active {
+            text-decoration: none; // ⬅️ hilangkan saat dikunjungi, hover, dll
+            color: get-color('neutral', 100); // ⬅️ pastikan warna tetap putih
           }
-        }
-      }
-    }
-
-    .searchContainer {
-      position: relative;
-      display: flex;
-      align-items: center;
-      width: rem-calc(243);
-      height: rem-calc(56);
-      background-color: get-color('neutral', 500);
-      border-radius: rem-calc(16);
-      padding: rem-calc(12);
-
-      .searchIcon {
-        position: absolute;
-        left: rem-calc(16);
-        width: rem-calc(20);
-        height: rem-calc(20);
-      }
-
-      .searchInput {
-        width: 100%;
-        height: 100%;
-        padding-left: rem-calc(48); // Beri ruang agar tidak overlap dengan ikon
-        color: get-color('neutral', 200);
-        @include typography('text-sm', 'regular');
-        border-radius: rem-calc(16);
-        font-family: 'poppins', sans-serif;
-        background-color: transparent;
-        border: none;
-        outline: none;
-
-        &::placeholder {
-          color: get-color('neutral', 200);
-        }
-      }
-    }
-  }
-  .desktopMenu {
-    .desktopNavLinks {
-      display: none;
-      cursor: pointer;
-
-      @include md {
-        display: flex;
-        flex-direction: row;
-        gap: rem-calc(24);
-        color: get-color('neutral', 100);
-        @include typography('text-md', 'regular');
-      }
-    }
-  }
-  .ctaButton {
-    margin-left: auto;
-    display: flex;
-    box-shadow: 0px 4px 24px #8746eb;
-
-    @include md {
-      margin-left: 0;
-    }
-
-    .buttonContent {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: rem-calc(6);
-      height: 100%;
-
-      > * {
-        flex-shrink: 0;
-      }
-
-      .buttonText {
-        color: get-color('neutral', 100);
-        @include typography('text-md', 'regular');
-        display: none;
-
-        @include md {
-          display: block;
         }
       }
     }

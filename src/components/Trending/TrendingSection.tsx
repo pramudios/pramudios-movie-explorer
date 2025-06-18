@@ -1,35 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Trending.module.scss';
 import { Trending } from './Trending';
-import { getTrendingMovies, MovieType } from '@/api/movies';
+import { useMovie } from '@/context/MovieContext';
 
 export const TrendingSection: React.FC = () => {
-  const [movies, setMovies] = useState<MovieType[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const movies = await getTrendingMovies();
-        setMovies(movies);
-      } catch (error) {
-        console.error('Error fetching movies:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchMovies();
-  }, []);
+  const { movies, searchQuery } = useMovie();
 
   return (
     <div className='container' id='movies'>
       <div className={styles.headerMovies}>
-        <h1 className={styles.title}>Trending Now</h1>
+        <h1 className={styles.title}>
+          {searchQuery ? 'Search Results' : 'Trending Now'}
+        </h1>
+
+        {searchQuery && (
+          <p className={styles.searchResult}>
+            Search result for &quot;
+            <span className={styles.query}>{searchQuery}</span>&quot;
+          </p>
+        )}
       </div>
 
-      {loading ? (
-        <p>Loading...</p>
+      {movies.length === 0 ? (
+        <p className={styles.searchResult}>No movie found.</p>
       ) : (
         <Trending.Group>
           {movies.map((movie) => (

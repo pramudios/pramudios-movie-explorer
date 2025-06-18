@@ -1,0 +1,20 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+
+  .backdropImage {
+    opacity: 0.5;
+    top: rem-calc(-90);
+    left: 0;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    pointer-events: none;
+  }
+}

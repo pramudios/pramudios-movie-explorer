@@ -1,76 +1,82 @@
 .hero {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding: rem-calc(223) rem-calc(16) 0 rem-calc(16);
+  width: 100%;
+  height: auto;
+  z-index: 0;
 
-  @include md {
-    padding: rem-calc(298) rem-calc(565) rem-calc(246) rem-calc(172);
-  }
-
-  &::before {
-    content: '';
-    background-image: url('../../assets/hero_image.png');
+  .backdropImage {
     opacity: 0.5;
-    top: rem-calc(-125);
+    top: rem-calc(-222);
     left: 0;
     width: 100%;
-    height: calc(100% + rem-calc(125));
+    height: auto;
     position: absolute;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     z-index: -1;
+    pointer-events: none;
+
+    @include md {
+      top: rem-calc(-298);
+    }
+  }
+}
+
+.overflowWrapper {
+  margin-top: rem-calc(132);
+  position: relative;
+  z-index: 2;
+
+  @include md {
+    margin-top: rem-calc(208);
+    margin-bottom: rem-calc(228);
   }
 
-  .overflowWrapper {
-    overflow: hidden;
-    .container {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
+    gap: get-spacing('spacing-2xl');
+
+    .title {
+      @include typography('display-xs', 'bold');
+      color: get-color('neutral', 100);
+      z-index: 2;
+
+      @include md {
+        @include typography('display-2xl', 'bold');
+      }
+    }
+    .description {
+      @include typography('text-sm', 'regular');
+      color: get-color('neutral', 200);
+      z-index: 2;
+
+      @include md {
+        @include typography('text-md', 'regular');
+      }
+    }
+
+    .buttonContainer {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: start;
-      gap: get-spacing('spacing-2xl');
+      width: 100%;
+      gap: 12px;
 
-      .title {
-        @include typography('display-xs', 'bold');
-        color: get-color('neutral', 100);
-        z-index: 2;
-
-        @include md {
-          @include typography('display-2xl', 'bold');
-        }
-      }
-      .description {
-        @include typography('text-sm', 'regular');
-        color: get-color('neutral', 200);
-        z-index: 2;
-
-        @include md {
-          @include typography('text-md', 'regular');
-        }
+      @include md {
+        flex-direction: row;
+        width: auto;
       }
 
-      .buttonContainer {
-        display: flex;
-        flex-direction: column;
+      .ctaButton {
+        @include typography('text-sm', 'medium');
         width: 100%;
-        gap: 12px;
 
         @include md {
-          flex-direction: row;
-          width: auto;
-        }
-
-        .ctaButton {
-          @include typography('text-sm', 'medium');
-          width: 100%;
-
-          @include md {
-            @include typography('text-md', 'medium');
-            width: 230px;
-          }
+          @include typography('text-md', 'medium');
+          width: 230px;
         }
       }
     }

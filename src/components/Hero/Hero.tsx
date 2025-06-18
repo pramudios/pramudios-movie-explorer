@@ -1,26 +1,40 @@
-import React from 'react';
+// components/Hero/Hero.tsx
+import React, { useEffect, useState } from 'react';
 import styles from './Hero.module.scss';
 import { Button } from '../ui/Button';
 import clsx from 'clsx';
+import { getTrendingMovies, MovieType } from '@/api/movies';
 
 export const Hero: React.FC = () => {
+  const [randomMovie, setRandomMovie] = useState<MovieType | null>(null);
+
+  useEffect(() => {
+    getTrendingMovies().then((movies) => {
+      if (movies.length > 0) {
+        const randomIndex = Math.floor(Math.random() * movies.length);
+        setRandomMovie(movies[randomIndex]);
+      }
+    });
+  }, []);
+
+  if (!randomMovie) return null;
+
   return (
     <main>
-      <section className={clsx(styles.hero)}>
-        <div className={styles.overflowWrapper}>
+      <section>
+        <div className={clsx(styles.hero)}>
+          <img
+            src={randomMovie.backdrop}
+            alt={randomMovie.title}
+            className={styles.backdropImage}
+          />
+        </div>
+        <div className={clsx(styles.overflowWrapper, 'container')}>
           <div className={styles.container}>
-            {/* title */}
-            <h1 className={styles.title}>The Gorge</h1>
+            <h1 className={styles.title}>{randomMovie.title}</h1>
 
-            {/* description */}
-            <p className={styles.description}>
-              Two highly trained operatives grow close from a distance after
-              being sent to guard opposite sides of a mysterious gorge. When an
-              evil below emerges, they must work together to survive what lies
-              within.
-            </p>
+            <p className={styles.description}>{randomMovie.overview}</p>
 
-            {/* Container untuk kedua tombol */}
             <div className={styles.buttonContainer}>
               <Button
                 as='a'
@@ -30,7 +44,6 @@ export const Hero: React.FC = () => {
               >
                 Watch Trailer
               </Button>
-
               <Button
                 as='a'
                 href='#'

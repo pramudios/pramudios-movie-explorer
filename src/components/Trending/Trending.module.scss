@@ -16,3 +16,15 @@
     }
   }
 }
+
+.searchResult {
+  font-size: rem-calc(16);
+  color: get-color('neutral', 300);
+  margin-top: rem-calc(24);
+  margin-bottom: rem-calc(16);
+
+  .query {
+    color: get-color('neutral', 100);
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,330 @@
+.overflowWrapper {
+  margin-top: rem-calc(132);
+  position: relative;
+  z-index: 2;
+
+  @include md {
+    margin-top: rem-calc(322);
+  }
+
+  .detailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: get-spacing('spacing-3xl');
+    position: relative;
+    z-index: 1;
+
+    .detailMovie {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: get-spacing('spacing-xl');
+      width: 100%;
+
+      .imageTitle {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: flex-start;
+        gap: rem-calc(16);
+        width: 100%;
+
+        @include md {
+          gap: rem-calc(32);
+        }
+
+        .image {
+          width: rem-calc(116);
+          flex-shrink: 0;
+
+          @include md {
+            width: rem-calc(260);
+          }
+
+          img {
+            width: 100%;
+            border-radius: rem-calc(8);
+          }
+        }
+
+        .titleDate {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          gap: rem-calc(8);
+          width: 100%;
+
+          @include md {
+            gap: rem-calc(16);
+          }
+
+          .title {
+            @include typography('text-xl', 'bold');
+            color: get-color('neutral', 100);
+
+            @include md {
+              @include typography('display-xl', 'bold');
+            }
+          }
+
+          .date {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: rem-calc(4);
+
+            .dateText {
+              @include typography('text-sm', 'regular');
+              color: get-color('neutral', 100);
+
+              @include md {
+                @include typography('text-md', 'regular');
+              }
+            }
+          }
+
+          .desktopOnly {
+            display: none;
+
+            @include md {
+              display: flex;
+              flex-direction: column;
+              gap: rem-calc(24);
+              margin-top: rem-calc(12);
+              width: 100%;
+            }
+
+            .buttonFavorite {
+              display: flex;
+              flex-direction: row;
+              gap: rem-calc(16);
+              width: 100%;
+
+              .ctaButton {
+                @include typography('text-sm', 'semibold');
+                width: rem-calc(220);
+
+                @include md {
+                  @include typography('text-md', 'semibold');
+                }
+              }
+
+              .favIcon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: rem-calc(52);
+                height: rem-calc(52);
+                border-radius: 9999px;
+                border: 1px solid #252b37;
+                z-index: 5;
+                cursor: pointer; // ✅ penting untuk UX
+                position: relative; // ✅ agar z-index bekerja
+                flex-shrink: 0;
+
+                img {
+                  width: rem-calc(24);
+                  height: rem-calc(24);
+                }
+              }
+            }
+
+            .movieInfo {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              gap: rem-calc(16);
+              width: 100%;
+
+              .infoContainer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                gap: rem-calc(8);
+                padding: rem-calc(16);
+                height: rem-calc(146);
+                border-radius: rem-calc(16);
+                border: 1px solid #252b37;
+                background-color: #000000;
+                width: 100%;
+
+                .iconInfo {
+                  width: rem-calc(32);
+                  height: rem-calc(32);
+                }
+
+                .infoTextSmall {
+                  @include typography('text-md', 'regular');
+                  color: get-color('neutral', 100);
+                }
+
+                .infoTextLarge {
+                  @include typography('text-xl', 'semibold');
+                  color: get-color('neutral', 100);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .mobileOnly {
+        display: flex;
+        flex-direction: column;
+        gap: rem-calc(16);
+        width: 100%;
+
+        @include md {
+          display: none;
+        }
+
+        .buttonFavorite {
+          display: flex;
+          gap: rem-calc(16);
+
+          .ctaButton {
+            @include typography('text-sm', 'semibold');
+            width: 100%;
+          }
+
+          .favIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: rem-calc(44);
+            height: rem-calc(44);
+            border-radius: 9999px;
+            border: 1px solid #252b37;
+            z-index: 5;
+            cursor: pointer; // ✅ penting untuk UX
+            position: relative; // ✅ agar z-index bekerja
+            flex-shrink: 0;
+
+            img {
+              width: rem-calc(24);
+              height: rem-calc(24);
+            }
+          }
+        }
+
+        .movieInfo {
+          display: flex;
+          gap: rem-calc(16);
+          width: 100%;
+
+          .infoContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: rem-calc(8);
+            padding: rem-calc(16);
+            height: rem-calc(120);
+            flex: 1;
+            border-radius: rem-calc(16);
+            border: 1px solid #252b37;
+            background-color: #000000;
+
+            .infoTextSmall {
+              @include typography('text-xs', 'regular');
+              color: get-color('neutral', 100);
+            }
+
+            .infoTextLarge {
+              @include typography('text-lg', 'semibold');
+              color: get-color('neutral', 100);
+            }
+          }
+        }
+      }
+    }
+
+    .overview {
+      display: flex;
+      flex-direction: column;
+      gap: rem-calc(8);
+      justify-content: flex-start;
+      align-items: start;
+
+      .overviewTitle {
+        @include typography('text-xl', 'bold');
+        color: get-color('neutral', 100);
+      }
+
+      .overviewText {
+        @include typography('text-sm', 'regular');
+        color: #a4a7ae;
+      }
+    }
+
+    .cast {
+      display: flex;
+      flex-direction: column;
+      gap: rem-calc(16);
+      width: 100%;
+
+      .castTitle {
+        @include typography('text-xl', 'bold');
+        color: get-color('neutral', 100);
+      }
+
+      .castList {
+        display: flex;
+        flex-direction: column;
+        gap: rem-calc(16);
+
+        @include md {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: rem-calc(24);
+        }
+
+        .castItem {
+          display: flex;
+          gap: rem-calc(12);
+          align-items: center;
+
+          img {
+            width: rem-calc(55);
+            height: auto;
+            border-radius: rem-calc(8);
+
+            @include md {
+              width: rem-calc(69);
+            }
+          }
+
+          .castPlaceholder {
+            width: rem-calc(55);
+            height: rem-calc(69);
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: rem-calc(8);
+            color: white;
+          }
+
+          .castProfile {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .castName {
+              @include typography('text-sm', 'semibold');
+              color: get-color('neutral', 100);
+            }
+
+            .castRole {
+              @include typography('text-sm', 'regular');
+              color: #a4a7ae;
+            }
+          }
+        }
+      }
+    }
+  }
+}
