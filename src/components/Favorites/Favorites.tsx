@@ -1,20 +1,29 @@
 // pages/Favorites/Favorites.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Favorites.module.scss';
 import { useFavorite } from '@/hooks/useFavorites';
-import FavBlackIcon from '@/assets/heart_black_icon.png';
+import FavRedIcon from '@/assets/heart_red_icon.png';
 import IconStar from '@/assets/icon_star.svg';
 import { Button } from '@/components/ui/Button';
 import { Footer } from '../Footer/Footer';
 import { Navbar } from '../Navbar/Navbar';
 import clsx from 'clsx';
+import { Toast } from '../Modal/Toast';
 
 export const Favorites: React.FC = () => {
   const { favoriteMovies, handleRemoveFromFavorites } = useFavorite();
+  const [showToast, setShowToast] = useState(false);
+
+  const handleRemove = (id: number) => {
+    handleRemoveFromFavorites(id);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000); // auto hide after 2s
+  };
 
   return (
     <>
       <Navbar />
+      <Toast message='Success Remove from Favorites' show={showToast} />
       <div className={clsx(styles.favContainer, 'container')}>
         <h1 className={styles.title}>Favorites</h1>
 
@@ -50,9 +59,9 @@ export const Favorites: React.FC = () => {
               <div className={styles.desktopOnly}>
                 <div
                   className={styles.favIcon}
-                  onClick={() => handleRemoveFromFavorites(movie.id)}
+                  onClick={() => handleRemove(movie.id)}
                 >
-                  <img src={FavBlackIcon} alt='FavIcon' />
+                  <img src={FavRedIcon} alt='FavIcon' />
                 </div>
               </div>
             </div>
@@ -70,7 +79,7 @@ export const Favorites: React.FC = () => {
                   className={styles.favIcon}
                   onClick={() => handleRemoveFromFavorites(movie.id)}
                 >
-                  <img src={FavBlackIcon} alt='FavIcon' />
+                  <img src={FavRedIcon} alt='FavIcon' />
                 </div>
               </div>
             </div>

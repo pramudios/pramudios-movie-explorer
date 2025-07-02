@@ -1,0 +1,32 @@
+.toast {
+  position: fixed;
+  top: rem-calc(114);
+  left: 50%;
+  transform: translateX(-50%);
+  width: rem-calc(531);
+  height: rem-calc(52);
+  border-radius: rem-calc(16);
+  gap: rem-calc(12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(40px);
+  background-color: rgba(255, 255, 255, 0.06); // transparan
+  color: white;
+  font-weight: 500;
+  font-size: rem-calc(14);
+  z-index: 9999;
+  padding: 0 rem-calc(20);
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+  .icon {
+    width: rem-calc(20);
+    height: rem-calc(20);
+  }
+
+  .message {
+    margin-left: rem-calc(12);
+    font-weight: 500;
+  }
+}

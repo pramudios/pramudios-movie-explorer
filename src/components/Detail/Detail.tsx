@@ -27,13 +27,32 @@ type DetailProps = {
   movie: MovieData;
   cast: MovieCast[];
   ageRating: string;
+  setShowToast: (show: boolean) => void;
 };
 
-export const Detail: React.FC<DetailProps> = ({ movie, cast, ageRating }) => {
+export const Detail: React.FC<DetailProps> = ({
+  movie,
+  cast,
+  ageRating,
+  setShowToast,
+}) => {
   const { favoriteMovies, handleAddToFavorites } = useFavorite();
 
   // ✅ Cek apakah film ini sudah difavoritkan
   const isFavorited = favoriteMovies.some((fav) => fav.id === movie.id);
+
+  const handleFavoriteClick = () => {
+    handleAddToFavorites({
+      id: movie.id,
+      title: movie.title,
+      score: movie.score,
+      image: movie.image,
+      overview: movie.overview,
+      isFavorite: true,
+    });
+    setShowToast(true); // ✅ tampilkan toast
+    setTimeout(() => setShowToast(false), 2000); // auto-hide setelah 2s
+  };
 
   return (
     <div className={clsx(styles.overflowWrapper, 'container')}>
@@ -61,19 +80,7 @@ export const Detail: React.FC<DetailProps> = ({ movie, cast, ageRating }) => {
                   >
                     Watch Trailer
                   </Button>
-                  <div
-                    className={styles.favIcon}
-                    onClick={() =>
-                      handleAddToFavorites({
-                        id: movie.id,
-                        title: movie.title,
-                        score: movie.score,
-                        image: movie.image,
-                        overview: movie.overview,
-                        isFavorite: true,
-                      })
-                    }
-                  >
+                  <div className={styles.favIcon} onClick={handleFavoriteClick}>
                     <img
                       src={isFavorited ? FavRedIcon : FavBlackIcon}
                       alt='FavIcon'
@@ -111,19 +118,7 @@ export const Detail: React.FC<DetailProps> = ({ movie, cast, ageRating }) => {
               >
                 Watch Trailer
               </Button>
-              <div
-                className={styles.favIcon}
-                onClick={() =>
-                  handleAddToFavorites({
-                    id: movie.id,
-                    title: movie.title,
-                    score: movie.score,
-                    image: movie.image,
-                    overview: movie.overview,
-                    isFavorite: true,
-                  })
-                }
-              >
+              <div className={styles.favIcon} onClick={handleFavoriteClick}>
                 <img
                   src={isFavorited ? FavRedIcon : FavBlackIcon}
                   alt='FavIcon'

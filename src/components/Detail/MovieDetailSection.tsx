@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer/Footer';
 import { HeroDetail } from '@/components/HeroDetail/HeroDetail';
 import { Detail } from '@/components/Detail/Detail';
 import { getMovieDetailExtras, MovieCast } from '@/api/movies';
+import { Toast } from '../Modal/Toast';
 
 type LocationState = {
   id: number;
@@ -24,6 +25,7 @@ export const MovieDetailSection: React.FC = () => {
 
   const [cast, setCast] = useState<MovieCast[]>([]);
   const [ageRating, setAgeRating] = useState<string>('NR');
+  const [showToast, setShowToast] = useState(false);
 
   console.log('🎥 Backdrop:', state.backdrop);
   console.log('🎥 Date:', state.date);
@@ -41,8 +43,14 @@ export const MovieDetailSection: React.FC = () => {
   return (
     <div id='detail'>
       <Navbar />
+      <Toast message='Success Add to Favorites' show={showToast} />
       <HeroDetail backdrop={state.backdrop} title={state.title} />
-      <Detail movie={state} cast={cast} ageRating={ageRating} />
+      <Detail
+        movie={state}
+        cast={cast}
+        ageRating={ageRating}
+        setShowToast={setShowToast}
+      />
       <Footer />
     </div>
   );
