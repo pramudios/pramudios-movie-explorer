@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Release.module.scss';
-import { Release } from './Release';
+import { ReleaseGroup } from './ReleaseGroup';
 import { getTrendingMovies } from '@/api/movies';
 
 type MovieType = {
@@ -8,6 +8,10 @@ type MovieType = {
   image: string;
   title: string;
   score: string;
+  backdrop: string;
+  overview: string;
+  date: string;
+  genre: string;
 };
 
 export const ReleaseSection: React.FC = () => {
@@ -38,11 +42,18 @@ export const ReleaseSection: React.FC = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <Release.Group>
-          {movies.map((movie) => (
-            <Release.Item key={movie.id} {...movie} />
-          ))}
-        </Release.Group>
+        <ReleaseGroup
+          movies={movies.map((movie) => ({
+            id: movie.id,
+            image: movie.image,
+            title: movie.title,
+            score: movie.score,
+            backdrop: movie.backdrop,
+            overview: movie.overview,
+            date: movie.date,
+            genre: movie.genre,
+          }))}
+        />
       )}
     </div>
   );

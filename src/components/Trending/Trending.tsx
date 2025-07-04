@@ -1,6 +1,6 @@
 import React from 'react';
 import { TrendingGroup } from './TrendingGroup/TrendingGroup';
-import { MovieItem } from './TrendingGroup/MovieItem/MovieItem';
+import { MovieItem } from '../MovieItem/MovieItem';
 import { motion, Variants } from 'framer-motion';
 import styles from './Trending.module.scss';
 

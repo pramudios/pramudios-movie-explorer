@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { MovieItem } from './MovieItem/MovieItem';
+import { MovieItem } from '../../MovieItem/MovieItem';
 import { motion, Variants } from 'framer-motion';
 import styles from './TrendingGroup.module.scss';
 import { Swiper as SwiperComponent, SwiperSlide } from 'swiper/react';
